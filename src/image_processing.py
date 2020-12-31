@@ -4,10 +4,16 @@ import ctypes
 import platform
 import cv2
 
-#make the app dpi aware
+#make Dpi Aware - Fix
 def fix_dpi():
     if int(platform.release()) >= 8:
         ctypes.windll.shcore.SetProcessDpiAwareness(True)
+
+#Helper Method to show image
+def show_image(window,filename, image):
+    cv2.imwrite(filename,image)
+    window["-TOUT-"].update(filename)   
+    window["-IMAGE-"].update(filename = filename)
 
 #Helper Method to add salt-and noise to an image
 def salt_and_pepper(image):
