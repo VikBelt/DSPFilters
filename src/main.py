@@ -4,8 +4,6 @@ from image_processing import *
 import PySimpleGUI as sg
 import os.path
 
-
-
 sg.theme('LightGrey1') 
 #file selection column
 file_column = [
@@ -18,7 +16,9 @@ image_column = [
     [sg.Text("Load an image, then press a button below to modify the image.")],
     [sg.Text(size=(40, 1), key="-TOUT-")],
     [sg.Image(key="-IMAGE-")],
-    [sg.Button("Add Noise"),sg.Button('Apply Median Filter'),sg.Button('Apply Gaussian Filter'),sg.Button('Edge Detection')],
+    [sg.Button("Add Noise"),sg.Button('Apply Median Filter'),
+        sg.Button('Apply Gaussian Filter'),sg.Button('Edge Detection')
+    ],
 ]
 
 #full layout and window 
@@ -59,9 +59,7 @@ while True:
         try:
             filename = os.path.join(values["-FOLDER-"], values["-FILE LIST-"][0])
             image = cv2.imread(filename,cv2.IMREAD_GRAYSCALE)
-            cv2.imwrite('noisy.png',salt_and_pepper(image))
-            window["-TOUT-"].update('noisy.png')   
-            window["-IMAGE-"].update(filename='noisy.png')
+            show_image(window,'noisy.png',salt_and_pepper(image))
         except:
             pass
     
@@ -71,9 +69,7 @@ while True:
             filename = os.path.join(values["-FOLDER-"], values["-FILE LIST-"][0])
             #apply median filter
             blurred_image = median_filter(filename)
-            cv2.imwrite('blurred.png',blurred_image)
-            window["-TOUT-"].update('blurred.png')   
-            window["-IMAGE-"].update(filename='blurred.png')
+            show_image(window,'blurred.png',blurred_image)
         except:
             pass
 
@@ -83,9 +79,17 @@ while True:
             filename = os.path.join(values["-FOLDER-"], values["-FILE LIST-"][0])
             #apply median filter
             gauss_image = gaussian_filter(filename)
-            cv2.imwrite('gaussian.png',gauss_image)
-            window["-TOUT-"].update('gaussian.png')   
-            window["-IMAGE-"].update(filename='gaussian.png')
+            show_image(window,'gaussian.png',gauss_image)
+        except:
+            pass
+    
+    #Apply Canny Edge Detection to Image
+    if event == 'Edge Detection':
+        try:
+            filename = os.path.join(values["-FOLDER-"], values["-FILE LIST-"][0])
+            #apply median filter
+            edges = edge_detection(filename)
+            show_image(window,'edges.png',edges)
         except:
             pass
 
