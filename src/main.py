@@ -7,6 +7,7 @@ import os.path
 sg.theme('LightGrey1') 
 #file selection column
 file_column = [
+    [sg.Button("Live Feed (Press ESC to Quit)")],
     [sg.Text("Select an Image"),sg.In(size=(25, 1), enable_events=True, key="-FOLDER-"),sg.FolderBrowse(),],
     [sg.Listbox(values=[], enable_events=True, size=(40, 20), key="-FILE LIST-")], [sg.Button('Close Program')],
 ]
@@ -203,6 +204,12 @@ while True:
             cv2.imwrite('xyz_fft.png',freq_mag)
             window["-FOUT-"].update('xyz_fft.png')   
             window["-FREQ-"].update(filename = 'xyz_fft.png')
+        except:
+            pass
+    
+    if event == "Live Feed (Press ESC to Quit)":
+        try:
+            webcam_video()
         except:
             pass
 
