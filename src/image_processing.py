@@ -234,3 +234,15 @@ def xyz_fft():
     mag = 20*np.log(corrected)
     #return freq spectrum
     return mag
+
+#video capture
+def webcam_video():
+    feed = cv2.VideoCapture(0)
+    #image feed
+    while True:
+        ret, frame = feed.read()
+        cv2.imshow('Input', frame)
+        c = cv2.waitKey(1)
+        #exit live feed on escape
+        if c == 27:
+            return
