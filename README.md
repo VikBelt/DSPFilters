@@ -1,13 +1,19 @@
 # Python Image Processing Suite
 A Simple Tool in Python for some Image Processing Fun! <br>
 ## Usage
-To Use the program simply download as a zip of clone the repository and run the program! <br>
-If you are building the project make sure you install the libraries used <br>
+To Use the program simply download as a zip or clone the repository and run the program! <br>
+When you are building the project make sure you install all of the needed libraries. <br>
 Installation on pip:
 ```
 pip install pysimplegui
 pip install numpy
 pip install opencv-python  
+```
+INstalation on conda:
+```
+conda install -c conda-forge pysimplegui
+conda install -c conda-forge opencv
+conda install -c conda-forge numpy
 ```
 Once you are done installing the needed libaries, just run the program! <br>
 You can compare your images to the ones in the sample-images folder. 
