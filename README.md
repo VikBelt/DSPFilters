@@ -13,7 +13,7 @@ Once you are done installing the needed libaries, just run the program! <br>
 You can compare your images to the ones in the sample-images folder. 
 ## Sources
 #### Digital Signal Processing Knowledge
-ECE 310 taken in UIUC Spring 2020 <br>
+ECE 310 - University of Illinois at Urbana-Champaign (UIUC)  Spring 2020 <br>
 https://ece.illinois.edu/academics/courses/ece310 <br>
 #### Other Resources
 GUI tutorial https://realpython.com/pysimplegui-python/ <br>
